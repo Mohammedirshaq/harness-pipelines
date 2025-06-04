@@ -1,8 +1,8 @@
 pipeline:
   name: Print Environment Variables Pipeline
   identifier: print_env_vars_pipeline
-  projectIdentifier: your_project
-  orgIdentifier: your_org
+  projectIdentifier: SFTY_Training
+  orgIdentifier: default
   tags: {}
 
   stages:
