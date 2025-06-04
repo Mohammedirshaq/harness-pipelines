@@ -1,0 +1,38 @@
+pipeline:
+  name: Print Environment Variables Pipeline
+  identifier: print_env_vars_pipeline
+  projectIdentifier: your_project
+  orgIdentifier: your_org
+  tags: {}
+
+  stages:
+    - stage:
+        name: Print Env Vars Stage
+        identifier: print_env_vars_stage
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: Print Specific Vars
+                  identifier: print_specific_vars
+                  type: ShellScript
+                  spec:
+                    shell: Bash
+                    script: |
+                      echo "Pipeline Name: <+pipeline.name>"
+                      echo "Stage Name: <+stage.name>"
+                      echo "Build Number: <+pipeline.sequenceId>"
+                      echo "Service Name: <+service.name>"
+                      echo "Environment Name: <+env.name>"
+                      echo "Execution URL: <+pipeline.executionUrl>"
+              
+              - step:
+                  name: Print All Vars
+                  identifier: print_all_vars
+                  type: ShellScript
+                  spec:
+                    shell: Bash
+                    script: |
+                      echo "===== ALL ENVIRONMENT VARIABLES ====="
+                      printenv | sort
